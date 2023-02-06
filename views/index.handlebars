@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Helvetica;
+      }
+      body {
+        padding: 20px;
+      }
+      .header {
+        background-image: url("https://herconomy.com/wp-content/uploads/herconomyemails/seallogo.png");
+        background-repeat: no-repeat;
+        background-position: top right;
+      }
+      /* table {
+        -pdf-keep-in-frame-mode: shrink;
+      } */
+      .footer {
+        display: flex;
+        justify-content: flex-end;
+      }
+      .main-content {
+        position: relative;
+      }
+      .footer-seal-image {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .details {
+        margin: 30px 0 39px 0;
+        border-top: 1.5px solid #000000;
+        border-bottom: 1.5px solid #000000;
+        padding: 11px 0;
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        gap: 10px;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+      }
+      .reporter-name {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 20px;
+        text-transform: capitalize;
+        margin: 0;
+        margin-bottom: 6px;
+      }
+      .reporter-address {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: rgba(0, 0, 0, 0.5);
+        text-transform: capitalize;
+        margin-bottom: 6px;
+      }
+      .reporter-phone {
+        margin-bottom: 6px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+      .details .right > p {
+        margin-bottom: 6px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+      .header-first-p {
+        margin: 11px 0 4px 0;
+      }
+      .table-wrapper .table .table-header {
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        background: #009fe4;
+        border-radius: 4px;
+        padding: 6px 27px 6px 16px;
+        color: #ffffff;
+      }
+      .table-wrapper .table {
+        margin: 0 0 19px 0;
+      }
+      .table-wrapper .table.float .table-header {
+        background: #f2994a;
+      }
+      .table-wrapper .table.plans .table-header {
+        background: #4fc143;
+      }
+      .table-wrapper .table .table-header h3 {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 20px;
+      }
+      .table-wrapper .table .table-header p {
+        font-size: 14px;
+        line-height: 20px;
+      }
+      .table-wrapper .table table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .table-wrapper .table table th,
+      .table-wrapper .table table td {
+        padding: 8px;
+        max-width: 20%;
+        width: 20%;
+        word-break: break-word;
+        text-align: left;
+      }
+      .table-wrapper .table table th {
+        text-transform: capitalize;
+        padding: 16px 8px;
+      }
+
+      .table-wrapper .table table th:nth-of-type(1),
+      .table-wrapper .table table td:nth-of-type(1) {
+        max-width: 25%;
+        width: 25%;
+      }
+
+      .table-wrapper .table table th:nth-of-type(2),
+      .table-wrapper .table table td:nth-of-type(2) {
+        max-width: 35%;
+        width: 35%;
+      }
+
+      .d-none {
+        display: none;
+      }
+
+      .table-wrapper .table table td div {
+        height: calc(1056px / 14);
+        overflow: hidden;
+        line-height: 20px;
+      }
+      .table-wrapper .table table td:nth-of-type(3) div {
+        color: #4fc143;
+      }
+      .table-wrapper .table table td:nth-of-type(4) div {
+        color: #ff0000;
+      }
+      .desc {
+        text-align: left;
+        text-transform: capitalize;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header_content" class="header">
+      <img
+        src="https://herconomy.com/wp-content/uploads/herconomyemails/herclogo1.png"
+        alt=""
+      />
+      <p class="header-first-p">226 Awolo/Bourdilon Road Ikoyi, Lagos State.</p>
+      <p>+2349047432047</p>
+    </div>
+
+    <div class="main-content">
+      <div class="details">
+        <div class="left">
+          <h3 class="reporter-name">{{userDetails.fullname}}</h3>
+          <p class="reporter-address">{{userDetails.address}}</p>
+          <p class="reporter-phone">{{userDetails.phone_number}}</p>
+          <p><b>Float Account Number</b> - {{userDetails.float_acc_number}}</p>
+        </div>
+        <div class="right">
+          <p><b>Start Date: </b> {{startDate}}</p>
+          <p><b>End Date: </b> {{endDate}}</p>
+          <p>
+            <b>Number of Deposits: </b> {{accountDetails.number_of_deposits}}
+          </p>
+          <p>
+            <b>Number of Withdrawals: </b>
+            {{accountDetails.number_of_withdrawal}}
+          </p>
+        </div>
+      </div>
+      <div class="table-wrapper">
+        {{#if vault.length}}
+        <div class="table vault">
+          <div class="table-header">
+            <h3>Vault</h3>
+            <p><b>Balance:</b> {{accountDetails.vault_balance}}</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Credit</th>
+                <th>Debit</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each vault}}
+              <tr>
+                <td><div>{{this.created_at}}</div></td>
+                <td>
+                  <div class="desc">{{this.desc}}</div>
+                </td>
+                <td><div>{{this.credit}}</div></td>
+                <td><div>{{this.debit}}</div></td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        {{/if}} {{#if float.length}}
+        <div class="table float">
+          <div class="table-header">
+            <h3>Float</h3>
+            <p><b>Balance:</b> {{accountDetails.float_balance}}</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <!-- <th>Transaction Reference</th> -->
+                <th>Description</th>
+                <th>Credit</th>
+                <th>Debit</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each float}}
+              <tr>
+                <td><div>{{this.created_at}}</div></td>
+                <td>
+                  <div class="desc">{{this.desc}}</div>
+                </td>
+                <td><div>{{this.credit}}</div></td>
+                <td><div>{{this.debit}}</div></td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        {{/if}} {{#if plans.length}}
+        <div class="table plans">
+          <div class="table-header">
+            <h3>Plans</h3>
+            <p><b>Balance:</b> {{accountDetails.plans_balance}}</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <!-- <th>Transaction Reference</th> -->
+                <th>Description</th>
+                <th>Credit</th>
+                <th>Debit</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each plans}}
+              <tr>
+                <td><div>{{this.created_at}}</div></td>
+                <td>
+                  <div class="desc">{{this.desc}}</div>
+                </td>
+                <td><div>{{this.credit}}</div></td>
+                <td><div>{{this.debit}}</div></td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </body>
+</html>
