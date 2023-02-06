@@ -62,7 +62,10 @@ const compile = async (templateName, data) => {
 
 app.post("/", async (req, res) => {
   try {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        headless:false,
+        args: ["--no-sandbox"]
+    });
     const page = await browser.newPage();
     const { data: user } = req.body;
 
