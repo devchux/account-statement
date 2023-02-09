@@ -1,4 +1,4 @@
-const puppeteer = require("puppeteer");
+const chromium = require("chrome-aws-lambda");
 const fs = require("fs-extra");
 const express = require("express");
 const path = require("path");
@@ -29,13 +29,6 @@ const hbs = expressHandlebars.create({
   },
 });
 
-// hbs.helpers("ifCond", (v1, v2, options) => {
-//   if (v1 > v2) {
-//     return options.fn(this);
-//   }
-//   return options.inverse(this);
-// });
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
@@ -62,10 +55,14 @@ const compile = async (templateName, data) => {
 
 app.post("/", async (req, res) => {
   try {
-    const browser = await puppeteer.launch({
-        headless:false,
-        args: ["--no-sandbox"]
+    const browser = await chromium.puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
+      headless: chromium.headless,
+      ignoreHTTPSErrors: true,
     });
+
     const page = await browser.newPage();
     const { data: user } = req.body;
 

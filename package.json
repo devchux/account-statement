@@ -11,13 +11,16 @@
   "author": "Chukwudi Eze",
   "license": "ISC",
   "dependencies": {
+    "chrome-aws-lambda": "^10.1.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
     "fs-extra": "^11.1.0",
     "handlebars": "^4.7.7",
-    "puppeteer": "^19.6.3"
+    "puppeteer-core": "^10.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "puppeteer": "^19.6.3"
   }
 }
