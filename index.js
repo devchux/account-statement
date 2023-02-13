@@ -63,7 +63,6 @@ app.post("/", async (req, res) => {
       ignoreHTTPSErrors: true,
     });
 
-    const page = await browser.newPage();
     const { data: user } = req.body;
 
     const content = await compile("index", {
@@ -97,16 +96,19 @@ app.post("/", async (req, res) => {
         })) || [],
     });
 
-    await page.setContent(content);
-    await page.pdf({
-      path: "report.pdf",
-      format: "a4",
-      printBackground: true,
-    });
-    await browser.close();
+    if (content) {
+      const page = await browser.newPage();
+      await page.setContent(content);
+      await page.pdf({
+        path: "report.pdf",
+        format: "a4",
+        printBackground: true,
+      });
+      await browser.close();
 
-    const base64String = base64Encode("report.pdf");
-    return res.json({ success: "Worked!!", data: base64String });
+      const base64String = base64Encode("report.pdf");
+      return res.json({ success: "Worked!!", data: base64String });
+    }
   } catch (error) {
     return res.json({ error: "Failed!!", error: error.message });
   }

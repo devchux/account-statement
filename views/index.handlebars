@@ -146,6 +146,22 @@
         width: 35%;
       }
 
+      .table-wrapper .table.balance table th {
+        padding: 6px;
+        background: #000000;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        text-transform: capitalize;
+        border: 1.5px solid #000000;
+      }
+
+      .table-wrapper .table.balance table td {
+        text-transform: capitalize;
+        border: 1.5px solid #000000;
+      }
+
       .d-none {
         display: none;
       }
@@ -164,6 +180,11 @@
       .desc {
         text-align: left;
         text-transform: capitalize;
+      }
+      .footer-image {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
       }
     </style>
   </head>
@@ -198,11 +219,39 @@
         </div>
       </div>
       <div class="table-wrapper">
+        <div class="table balance">
+          <table>
+            <thead>
+              <tr>
+                <th>Wallet</th>
+                <th>Opening Balance</th>
+                <th>Closing Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Vault</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Float</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Plans</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         {{#if vault.length}}
         <div class="table vault">
           <div class="table-header">
             <h3>Vault</h3>
-            <p><b>Balance:</b> {{accountDetails.vault_balance}}</p>
+            <h3><b>Balance:</b> {{accountDetails.vault_balance}}</h3>
           </div>
           <table>
             <thead>
@@ -231,7 +280,7 @@
         <div class="table float">
           <div class="table-header">
             <h3>Float</h3>
-            <p><b>Balance:</b> {{accountDetails.float_balance}}</p>
+            <h3><b>Balance:</b> {{accountDetails.float_balance}}</h3>
           </div>
           <table>
             <thead>
@@ -261,7 +310,7 @@
         <div class="table plans">
           <div class="table-header">
             <h3>Plans</h3>
-            <p><b>Balance:</b> {{accountDetails.plans_balance}}</p>
+            <h3><b>Balance:</b> {{accountDetails.plans_balance}}</h3>
           </div>
           <table>
             <thead>
@@ -290,5 +339,10 @@
         {{/if}}
       </div>
     </div>
+      <img
+        src="https://herconomy.com/wp-content/uploads/herconomyemails/seallogo.png"
+        alt=""
+        class="footer-image"
+      />
   </body>
 </html>
